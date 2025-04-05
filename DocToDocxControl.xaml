@@ -18,7 +18,7 @@
         <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,10">
             <Button Content="Select Files"
                     Click="SelectFilesButton_Click"
-                    Width="100" Margin="5" />
+                    Width="100" Margin="5" Background="#FF1AA5ED" FontWeight="Bold" />
             <TextBlock x:Name="SelectedFilesLabel"
                        VerticalAlignment="Center"
                        Margin="5" />
@@ -37,7 +37,7 @@
             <Button Content="Start Conversion"
                     Click="StartConversionButton_Click"
                     Width="120"
-                    Margin="5" />
+                    Margin="5" Background="#FF1AA5ED" FontWeight="Bold" />
         </StackPanel>
     </Grid>
 </UserControl>
