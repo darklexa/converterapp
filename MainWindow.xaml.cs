@@ -9,6 +9,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace MyWpfApp;
 
 /// <summary>
@@ -32,6 +33,6 @@ public partial class MainWindow : Window
     private void HeaderSeperatorButton_Click(object sender, RoutedEventArgs e)
     {
         MessageBox.Show("You have opened Header Seperator page!");
-        ContentArea.Content = new HeaderSeperatorControl();
+        ContentArea.Content = new HeaderSeperator();
     }
 }

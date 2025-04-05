@@ -21,6 +21,9 @@ namespace MyWpfApp
     /// </summary>
     public partial class DocToDocxControl : UserControl
     {
+        // Declare selectedFiles as a class-level field.
+        private List<string> selectedFiles = new List<string>();
+
         public DocToDocxControl()
         {
             InitializeComponent();

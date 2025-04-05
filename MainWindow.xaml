@@ -11,6 +11,8 @@
     <Grid>
         <!-- Two Columns: one for the buttons, one for the dynamic content -->
 
+        
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200" />
             <ColumnDefinition Width="*" />
@@ -32,7 +34,7 @@
         </StackPanel>
 
         <!-- Right Panel: A ContentControl where we'll swap in UserControls -->
-        <ContentControl x:Name="ContentAre" Grid.Column="1" />
+        <ContentControl x:Name="ContentArea" Grid.Column="1" />
 
 
     </Grid>
