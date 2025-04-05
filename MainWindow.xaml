@@ -6,15 +6,34 @@
         xmlns:local="clr-namespace:MyWpfApp"
         mc:Ignorable="d"
         Title="MainWindow" Height="1080" Width="1440">
+    
+    
     <Grid>
-		<StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+        <!-- Two Columns: one for the buttons, one for the dynamic content -->
 
-			<Button Content="Doc to Docx" Width="200" Height="30" Margin="5" 
-					Click="ConvertButton_Click"/> 
-			
-			<Button Content="Header Seperator" Width="200" Height="30" Margin="5"
-					Click="HeaderButton_Click"/>
-			
-		</StackPanel>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Left Panel: Buttons for navigation -->
+        <StackPanel Grid.Column="0" Background="LightGray">
+            
+            <Button Content="Doc To Docx"
+                    Margin="5"
+                    Click="DocToDocxButton_Click" />
+
+            <Button Content="Header Seperator"
+                    Margin="5"
+                    Click="HeaderSeperatorButton_Click" />
+
+                <!-- I will add more buttons here -->
+
+        </StackPanel>
+
+        <!-- Right Panel: A ContentControl where we'll swap in UserControls -->
+        <ContentControl x:Name="ContentAre" Grid.Column="1" />
+
+
     </Grid>
 </Window>

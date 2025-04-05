@@ -21,15 +21,17 @@ public partial class MainWindow : Window
         InitializeComponent();
     }
 
-    //This is the event handler for the button click
-    private void ConvertButton_Click(object sender, RoutedEventArgs e)
+    // When the user clicks "Doc to Docx," load the DocToDocxControl into ContentArea
+    private void DocToDocxButton_Click(object sender, RoutedEventArgs e)
     {
-        MessageBox.Show("Button clicked!");
+        MessageBox.Show("You have opened DocToDocx page!");
+        ContentArea.Content = new DocToDocxControl();
     }
 
-    //This is the event handler for the second button, header
-    private void HeaderButton_Click(object sender, RoutedEventArgs e)
+    // When the user clicks "Header Seperator," load the HeaderSeperatorControl into ContentArea
+    private void HeaderSeperatorButton_Click(object sender, RoutedEventArgs e)
     {
-        MessageBox.Show("Header button clicked!");
+        MessageBox.Show("You have opened Header Seperator page!");
+        ContentArea.Content = new HeaderSeperatorControl();
     }
 }
