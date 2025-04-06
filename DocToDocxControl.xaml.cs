@@ -22,6 +22,7 @@ using WordDoc = Microsoft.Office.Interop.Word.Document;
 
 
 
+
 namespace MyWpfApp
 {
     /// <summary>
@@ -62,7 +63,7 @@ namespace MyWpfApp
         }
 
         // Start the conversion process
-        private void StartConversionButton_Click(object sender, RoutedEventArgs e)
+        private async void StartConversionButton_Click(object sender, RoutedEventArgs e)
         {
             // output directory
             string outputFolder = @"C:\ConvertedFiles";
@@ -76,13 +77,22 @@ namespace MyWpfApp
             // loop through each selected file and CONVERT
             for (int i = 0; i < selectedFiles.Count; i++)
                 {
-                    string inputFile = selectedFiles[i];
+
+                string inputFile = selectedFiles[i];
 
                 // change filename extension from .doc to .docx
                 string outputFile = IOPath.Combine(outputFolder, IOPath.GetFileNameWithoutExtension(inputFile) + ".docx");
 
+                // progress reporter to update the UI
+                var progressIndicator = new Progress<int>(percent =>
+                {
+                    // update the progress bar
+                    StatusListBox.Items[i] = $"{inputFile} - {percent}% completed";
+                });
+
                 // call the conversion helper method
-                string result = ConvertDocToDocx(inputFile, outputFile);
+                string result = await System.Threading.Tasks.Task.Run(() 
+                    => ConvertDocToDocxWithProgress(inputFile, outputFile, progressIndicator));
 
                 // update the status list
                 StatusListBox.Items[i] = $"{inputFile} - {result}";
@@ -94,10 +104,23 @@ namespace MyWpfApp
         }
 
         // Helper method to convert DOC to DOCX
-        private string ConvertDocToDocx(string inputFile, string outputFile)
+        private string ConvertDocToDocxWithProgress(string inputFile, string outputFile, IProgress<int> progress)
         {
+            // Simulate progress updates.
+
+            for (int p = 0; p <= 100; p += 10)
+            {
+                // Simulate some work being done
+                Thread.Sleep(200);
+                progress.Report(p);
+            }
+
+            //After the simulated work, we can proceed with the actual conversion.
+
+
             WordApp? wordApp = null;
             WordDoc? doc = null;
+
 
             try
             {
