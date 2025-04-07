@@ -23,11 +23,13 @@
             
             <Button Content="Doc To Docx"
                     Margin="5"
-                    Click="DocToDocxButton_Click" />
+                    Click="DocToDocxButton_Click" 
+                    Background="Beige"  />
 
             <Button Content="Header Seperator"
                     Margin="5"
-                    Click="HeaderSeperatorButton_Click" />
+                    Click="HeaderSeperatorButton_Click"
+                    Background="Beige" />
 
                 <!-- I will add more buttons here -->
 
