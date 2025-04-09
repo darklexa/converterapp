@@ -22,6 +22,16 @@
             <TextBlock x:Name="SelectedFilesLabel"
                        VerticalAlignment="Center"
                        Margin="5" />
+
+            <Button Content="Start Conversion"
+            Click="StartConversionButton_Click"
+            Width="120"
+            Margin="5" Background="#FF1AA5ED" FontWeight="Bold" />
+
+            <TextBlock x:Name="OutputLocationTextBlock"
+            VerticalAlignment="Center"
+            Margin="5" />
+
         </StackPanel>
 
         <!-- Status display area -->
@@ -31,7 +41,7 @@
                   />
 
         <!-- Output location display and Start button -->
-        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left">
+        <!--<StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left">
             <TextBlock x:Name="OutputLocationTextBlock"
                        VerticalAlignment="Center"
                        Margin="5" />
@@ -39,6 +49,7 @@
                     Click="StartConversionButton_Click"
                     Width="120"
                     Margin="5" Background="#FF1AA5ED" FontWeight="Bold" />
-        </StackPanel>
+        </StackPanel>-->
+        
     </Grid>
 </UserControl>
