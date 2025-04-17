@@ -17,6 +17,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WordDoc = Microsoft.Office.Interop.Word.Document;
+using WordSection = Microsoft.Office.Interop.Word.Section;
+using WordHeader = Microsoft.Office.Interop.Word.HeaderFooter;
+using WordApp = Microsoft.Office.Interop.Word.Application;
+
 
 namespace MyWpfApp
 {
@@ -51,7 +56,7 @@ namespace MyWpfApp
 
 
         // starting header extraction
-        private async Task StartHeaderButton_Click(object sender, RoutedEventArgs e)
+        private async void StartHeaderButton_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(selectedHeaderFile))
             {
@@ -74,7 +79,9 @@ namespace MyWpfApp
             });
 
             // run the header extraction on a background thread
-            string result = await Task.Run(() => ExtractHeadersFromDoc(selectedHeaderFile, outputFolder, progressIndicator));
+            string result = await System.Threading.Tasks.Task.Run(() 
+                => ExtractHeadersFromDoc(selectedHeaderFile, 
+                outputFolder, progressIndicator));
 
             // update the UI with the result
             OutputLocationTextBlock.Text = result;
@@ -83,8 +90,8 @@ namespace MyWpfApp
 
         private string ExtractHeadersFromDoc(string inputFile, string outputfolder, IProgress<int> progress)
         {
-            WordApp wordApp = null;
-            DocumentFormat doc = null;
+            WordApp? wordApp = null;
+            WordDoc? doc = null;
 
             try
             {
@@ -99,9 +106,9 @@ namespace MyWpfApp
                 // loop through each section
                 for (int i = 1; i <= sectionCount; i++)
                 {
-                    Section section = doc.Sections[i];
+                    WordSection section = doc.Sections[i];
                     //access primary header
-                    HeaderFooter header = section.Headers[WdHeaderFooterIndex.wdHeaderFooterPrimary];
+                    WordHeader header = section.Headers[WdHeaderFooterIndex.wdHeaderFooterPrimary];
 
                     // only process if the header exist.
                     if (header.Exists)
